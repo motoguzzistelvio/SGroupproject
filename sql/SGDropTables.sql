@@ -1,0 +1,13 @@
+USE da4test
+
+ALTER Video 
+DROP FOREIGN KEY video_genrefk;
+
+ALTER TABLE VideoItem
+DROP FOREIGN KEY videoItem_VideoIdfk,  
+DROP FOREIGN KEY videoItem_CustomerIdfk;
+
+DROP TABLE IF EXISTS Genre;
+DROP TABLE IF EXISTS Video;
+DROP TABLE IF EXISTS VideoItem;
+DROP TABLE IF EXISTS Customer;

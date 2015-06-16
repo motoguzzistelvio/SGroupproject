@@ -1,0 +1,43 @@
+use da4test;
+CREATE TABLE IF NOT EXISTS Genre (
+    id INT NOT NULL AUTO_INCREMENT,
+	Description VARCHAR(30) DEFAULT NULL,
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS Video(
+    id INT NOT NULL AUTO_INCREMENT,
+	Name VARCHAR(30) DEFAULT NULL,
+	GenreId INT NOT NULL,
+	Minutes INT,
+	actors VARCHAR(256),
+	Release_Date DATE NOT NULL,
+    PRIMARY KEY (id),
+	INDEX GenreId_FK(GenreId)
+	
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS VideoItem(
+    id INT NOT NULL AUTO_INCREMENT,
+	SerialNumber VARCHAR(50) DEFAULT NULL,
+	VideoId INT NOT NULL,
+	CustomerId INT,
+	Actors VARCHAR(256),
+	CreateDate TIMESTAMP,
+	
+    PRIMARY KEY (id),
+	INDEX VideoId_FK (VideoId),
+	INDEX CustomerId_FK (CustomerId),
+	INDEX SerialNumber_IDX (SerialNumber)
+	
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS customer (
+    id INT NOT NULL AUTO_INCREMENT,
+	Firstname VARCHAR(50) NOT NULL,
+	Surname VARCHAR(50) NOT NULL,
+	IDNumber VARCHAR(15) NOT NULL,
+	CreateDate TIMESTAMP,
+    PRIMARY KEY (id),
+	INDEX idNum_IDX (IDNumber)
+) ENGINE=INNODB;
